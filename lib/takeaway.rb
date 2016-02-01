@@ -48,5 +48,4 @@ class Takeaway
   def sum(specific_order)
     specific_order.show_sum
   end
-
 end
