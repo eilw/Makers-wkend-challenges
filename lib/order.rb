@@ -1,7 +1,7 @@
 require_relative 'menu'
 
 class Order
-
+  #TODO - look at encapsulation - oder
   attr_reader :current, :menu
 
   def initialize(menu)

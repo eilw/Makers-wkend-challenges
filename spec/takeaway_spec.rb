@@ -10,13 +10,13 @@ describe Takeaway do
   subject(:takeaway){ described_class.new(order_klass,menu,text) }
 
 
-  describe '#initialize' do
+  describe 'initialize' do
     it 'initiates menu' do
       expect(takeaway.menu).to eq menu
     end
   end
 
-  describe '#to_s' do
+  describe 'to_s' do
     it 'shows the menu' do
       allow(menu).to receive(:show)
       expect(menu).to receive(:show)

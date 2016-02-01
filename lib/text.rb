@@ -2,7 +2,6 @@ require 'twilio-ruby'
 require 'dotenv'
 
 class Text
-  attr_reader :send_confirmation
 
   def initialize
     @credentials = Dotenv.load('dotenv.env')
@@ -17,7 +16,7 @@ class Text
     @client = Twilio::REST::Client.new account_sid, auth_token
 
     @client.account.messages.create({
-    	from: @credentials['tilio_nr']
+    	from: @credentials['tilio_nr'],
     	to: @credentials['phone_nr'],
       body: body
     })

@@ -13,7 +13,7 @@ class Takeaway
   end
 
   def new_order
-    @order = order_klass.new(dishes)
+    @order = order_klass.new(menu.dishes)
   end
 
   def to_s
@@ -27,12 +27,6 @@ class Takeaway
   end
 
   private
-
-  attr_reader :dishes
-
-  def dishes
-    menu.dishes
-  end
 
   def deliver_time
     (Time.now + (60*60)).strftime("%H:%M")

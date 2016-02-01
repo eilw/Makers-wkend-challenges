@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
   subject(:menu){ described_class.new}
 
-  describe '#initialize' do
+  describe 'initialize' do
     it 'creates a new hash with dishes' do
       expect(menu.dishes.empty?).to be false
     end

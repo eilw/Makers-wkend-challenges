@@ -6,7 +6,7 @@ describe Order do
   let(:menu){ {dish3: 7.5, dish4: 10.0 } }
   subject(:order){ described_class.new(menu)}
 
-  describe '#initialize' do
+  describe 'initialize' do
     it 'creates an empty order' do
       expect(order.current.empty?).to be true
     end
