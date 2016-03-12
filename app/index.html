@@ -26,23 +26,22 @@
         <button class="btn">Add project</button>
       </form>
     </section>
-    <section id='task-overview'>
+    <section id='task-overview' ng-controller='TaskController as taskCtrl'>
       <h1> Task overview </h1>
-      <section id='task-todo' ng-controller='TaskController as taskCtrl'>
+      <section id='task-todo'>
         <h3> Tasks to be completed</h3>
         <form class="form-horizontal">
           <input type="text" ng-model="taskCtrl.newTask">
           <button id='addTask' class="btn" ng-click="taskCtrl.addTask()">Add task</button>
         </form>
         <ul>
-          <li class='task' id='task1' ng-repeat='task in taskCtrl.tasks track by $index'>{{task}}<input type='checkbox' class='finish'></input><a href='#' class='delete'>X</a></li>
+          <li class='task' ng-repeat='task in taskCtrl.tasks track by $index'>{{task}}<input type='checkbox' class='finish' ng-click="taskCtrl.completeTask($index)" ></input><a href='#' class='delete'>X</a></li>
         </ul>
       </section>
       <section id='task-completed'>
         <h4> Completed tasks</h4>
         <ul class='completed-tasks'>
-          <li class='completed-tasks' id='task3'> first completed task <input type='checkbox' class='finish'checked></input><a href='#' class='delete'>X</a></li>
-          <li class='completed-tasks' id='task4'> second completed task <input type='checkbox' class='finish'checked></input><a href='#' class='delete'>X</a></li>
+          <li class='completed-task' ng-repeat='completedTask in taskCtrl.tasksCompleted track by $index'> {{completedTask}}<input type='checkbox' class='finish'checked></input><a href='#' class='delete'>X</a></li>
         </ul>
       </section>
       <section id='task-controls'>

@@ -2,17 +2,17 @@ Requirements completed
 -----
 * A user can create a new task
 * A user can see a list of previously added tasks
+* A user can complete a task
+* When a user clicks a task complete, it shows up under the completed area
+* Completed tasks are checked
 
 
 Requirements to do
 -----
 
-* A user can complete a task
-* A task is added dynamically to the list, without getting having to use an api call
-* When a user clicks a task complete, it shows up under the completed area
 * A completed task is sent to the database, where the information is stored
 * Changes to the tasks are stored, so when the user returns, the todos are the same(completed/not completed)
-* Completed tasks are checked
+
 * A user can show/hide the completed tasks
 * A user can create multiple projects
 * Only one api serves the projects and todos

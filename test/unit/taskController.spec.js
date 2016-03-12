@@ -5,22 +5,36 @@ describe('TaskController', function() {
 
   beforeEach(inject(function($controller) {
     ctrl = $controller('TaskController');
-    task = 'this is the first task';
 
   }));
 
 
   describe ('adding and completing tasks',function(){
-    it('tasks can be added',function(){
+
+    beforeEach(function(){
+      task = 'this is the first task';
       ctrl.newTask = task;
       ctrl.addTask();
+    });
+
+    it('tasks can be added',function(){
       expect(ctrl.tasks.length).toEqual(1);
     });
 
     it('task input is cleared when task is added',function(){
-      ctrl.newTask = task;
-      ctrl.addTask();
       expect(ctrl.newTask).toEqual('')
+    });
+
+    it('a task is stored in completed tasks, when clicked',function(){
+      ctrl.finishTask = ctrl.tasks[0];
+      ctrl.completeTask();
+      expect(ctrl.tasksCompleted).toContain(task);
+    });
+
+    it('a task is removed from todos, when completed', function(){
+      ctrl.finishTask = ctrl.tasks[0];
+      ctrl.completeTask();
+      expect(ctrl.tasks).not.toContain(task);
     });
 
   });
