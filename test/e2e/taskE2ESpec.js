@@ -19,6 +19,18 @@ describe("ToDoManager", function(){
     var checkComplete = element.all(by.css("input[type=checkbox]")).first().click();
     var completedTasks = element.all(by.css('.completed-task'));
     expect(completedTasks.count()).toBe(1);
+  });
 
+  it('a user can edit a task',function(){
+    browser.get("http://localhost:8000");
+    var task = element(by.model('taskCtrl.newTask'));
+    var submit = $('#addTask');
+    task.sendKeys('The first task');
+    submit.click();
+    var taskToBeEdited = element(by.model('task.text'));
+    taskToBeEdited.clear();
+    taskToBeEdited.sendKeys('Edited first task');
+    var task = element(by.css('.task')).all(by.css('input[type=text]')).last();
+    expect(task.getAttribute('value')).toEqual('Edited first task');
   });
 });

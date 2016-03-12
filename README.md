@@ -9,11 +9,12 @@ Requirements completed
 
 Requirements to do
 -----
-
+* user can see how many tasks are remaining
+* a user can edit a task
+* A user can show/hide the completed tasks
 * A completed task is sent to the database, where the information is stored
 * Changes to the tasks are stored, so when the user returns, the todos are the same(completed/not completed)
 
-* A user can show/hide the completed tasks
 * A user can create multiple projects
 * Only one api serves the projects and todos
 * A user can select a specific project
@@ -23,5 +24,3 @@ Requirements to do
 * A user can delete a project
 * A user can drag a task between projects
 * The projects stores the new tasks
-* A user can add a location to the task
-* A user can open a map and see the location of where the tasks are

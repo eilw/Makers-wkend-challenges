@@ -5,7 +5,7 @@ todoManager.controller('TaskController',[function(){
   self.tasksCompleted = [];
 
   self.addTask = function(){
-    self.tasks.push(self.newTask);
+    self.tasks.push({text: self.newTask, done:false});
     self.newTask = '';
   };
 
@@ -13,5 +13,10 @@ todoManager.controller('TaskController',[function(){
     self.tasksCompleted.push(self.tasks[index]);
     self.tasks.splice(index, 1);
   };
+
+  self.editMode = function(){
+    $(event.target).closest('li');
+
+  }
 
 }]);
