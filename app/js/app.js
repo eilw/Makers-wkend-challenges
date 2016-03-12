@@ -1,1 +1,1 @@
-var todoManager = angular.module('todoManager',['ngResource']);
+var todoManager = angular.module('ToDoManager',['ngResource']);

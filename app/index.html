@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app='ToDoManager'>
   <head>
     <meta charset="utf-8">
     <title>Github user search</title>
@@ -8,6 +8,8 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/controllers/TaskController.js"></script>
+
 
   </head>
 
@@ -26,22 +28,21 @@
     </section>
     <section id='task-overview'>
       <h1> Task overview </h1>
-      <section id='task-todo'>
+      <section id='task-todo' ng-controller='TaskController as taskCtrl'>
         <h3> Tasks to be completed</h3>
         <form class="form-horizontal">
-          <input type="text" >
-          <button class="btn">Add tasks</button>
+          <input type="text" ng-model="taskCtrl.newTask">
+          <button id='addTask' class="btn" ng-click="taskCtrl.addTask()">Add task</button>
         </form>
         <ul>
-          <li class='task' id='task1'>first task <input type='checkbox' class='finish'></input><a href='#' class='delete'>X</a></li>
-          <li class='task' id='task2'>second task <input type='checkbox' class='finish'></input><a href='#' class='delete'>X</a></li>
+          <li class='task' id='task1' ng-repeat='task in taskCtrl.tasks track by $index'>{{task}}<input type='checkbox' class='finish'></input><a href='#' class='delete'>X</a></li>
         </ul>
       </section>
       <section id='task-completed'>
         <h4> Completed tasks</h4>
         <ul class='completed-tasks'>
-          <li class='task' id='task3'> first completed task <input type='checkbox' class='finish'checked></input><a href='#' class='delete'>X</a></li>
-          <li class='task' id='task4'> second completed task <input type='checkbox' class='finish'checked></input><a href='#' class='delete'>X</a></li>
+          <li class='completed-tasks' id='task3'> first completed task <input type='checkbox' class='finish'checked></input><a href='#' class='delete'>X</a></li>
+          <li class='completed-tasks' id='task4'> second completed task <input type='checkbox' class='finish'checked></input><a href='#' class='delete'>X</a></li>
         </ul>
       </section>
       <section id='task-controls'>

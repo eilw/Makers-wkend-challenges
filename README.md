@@ -1,11 +1,12 @@
 Requirements completed
 -----
+* A user can create a new task
+* A user can see a list of previously added tasks
 
 
 Requirements to do
 -----
-* A user can create a new task
-* A user can see a list of previously added tasks
+
 * A user can complete a task
 * A task is added dynamically to the list, without getting having to use an api call
 * When a user clicks a task complete, it shows up under the completed area
