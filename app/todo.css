@@ -1,0 +1,15 @@
+#project-overview{
+  background-color: #eee;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20%;
+}
+#task-overview{
+  margin-left: 20%
+}
+
+.completed-tasks{
+  text-decoration: line-through;
+  color: grey;
+}
