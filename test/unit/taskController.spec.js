@@ -45,7 +45,7 @@ describe('TaskController', function() {
      beforeEach(inject(function($httpBackend){
        httpBackend = $httpBackend
        httpBackend
-         .when("GET", 'http://localhost:9292/api?project_id=1')
+         .expectGET('http://localhost:9292/api?project_id=1')
          .respond(
             {"task":
               [{"id":1,"content":"first task","completed":false,"project_id":1},
@@ -53,6 +53,11 @@ describe('TaskController', function() {
             }
          );
      }));
+
+    afterEach(function() {
+      httpBackend.verifyNoOutstandingExpectation();
+      httpBackend.verifyNoOutstandingRequest();
+    });
 
      it('displays todo tasks in the task', function(){
        ctrl.getTasks();

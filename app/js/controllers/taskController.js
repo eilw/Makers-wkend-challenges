@@ -1,4 +1,4 @@
-todoManager.controller('TaskController',[ '$resource', function($resource){
+todoManager.controller('TaskController',[ 'GetTasks', function(GetTasks){
 
   var self = this;
   self.newTask = "";
@@ -27,11 +27,9 @@ todoManager.controller('TaskController',[ '$resource', function($resource){
     self.tasks.splice(index, 1);
   };
 
-  var taskResource = $resource('http://localhost:9292/api');
-
   self.getTasks = function(){
-    taskResource.get({project_id: 1}).$promise.then(function(data){
-      self.displayTasks(data.task);
+    GetTasks.retrieve().then(function(response){
+      self.displayTasks(response.data.task);
     });
   };
 
