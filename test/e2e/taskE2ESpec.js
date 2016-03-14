@@ -3,11 +3,11 @@ describe("ToDoManager", function(){
     browser.get("http://localhost:8000");
     var task = element(by.model('taskCtrl.newTask'));
     var submit = $('#addTask');
-    task.sendKeys('The first task');
+    task.sendKeys('Test task first');
     submit.click();
     expect(task.getAttribute('value')).toEqual('');
-    var tasks = element.all(by.css('.task'));
-    expect(tasks.count()).toBe(1);
+    var newTask = element.all(by.css('.task')).all(by.css('input[type=text]')).last();
+    expect(newTask.getAttribute('value')).toEqual('Test task first');
   });
 
   it('a user can complete a task and it is stored in completed',function(){
@@ -16,9 +16,9 @@ describe("ToDoManager", function(){
     var submit = $('#addTask');
     task.sendKeys('The first task');
     submit.click();
-    var checkComplete = element.all(by.css("input[type=checkbox]")).first().click();
-    var completedTasks = element.all(by.css('.completed-task'));
-    expect(completedTasks.count()).toBe(1);
+    var checkComplete = element.all(by.css('.task')).all(by.css("input[type=checkbox]")).last().click();
+    var completedTask = element.all(by.css('.completed-task')).last();
+    expect(completedTask.getText()).toEqual('The first task');
   });
 
   xit('a user can edit a task',function(){

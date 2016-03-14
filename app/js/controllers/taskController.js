@@ -1,25 +1,15 @@
-todoManager.controller('TaskController',[ 'GetTasks', function(GetTasks){
+todoManager.controller('TaskController',[ 'TaskService', function(TaskService){
 
   var self = this;
+  self.taskServ = TaskService;
   self.newTask = "";
-  self.tasks =[];
-  self.tasksCompleted = [];
+  self.tasks = self.taskServ.returnTasks();
+  self.tasksCompleted = self.taskServ.returnCompletedtasks();
+
 
   self.addTask = function(){
-    self.tasks.push({text: self.newTask, done:false});
+    self.taskServ.addTask(self.newTask);
     self.newTask = '';
-    self.getTasks();
-  };
-
-  self.displayTasks = function(tasks){
-    for(var i = 0; i<tasks.length; i++){
-      if(tasks[i].completed){
-        self.tasksCompleted.push({text: tasks[i].content, done: tasks[i].completed, taskId: tasks[i].id, projectId: tasks[i].project_id});
-      }
-      else{
-        self.tasks.push({text: tasks[i].content, done: tasks[i].completed, taskId: tasks[i].id, projectId: tasks[i].project_id});
-      }
-    }
   };
 
   self.completeTask = function(index){
@@ -27,10 +17,5 @@ todoManager.controller('TaskController',[ 'GetTasks', function(GetTasks){
     self.tasks.splice(index, 1);
   };
 
-  self.getTasks = function(){
-    GetTasks.retrieve().then(function(response){
-      self.displayTasks(response.data.task);
-    });
-  };
 
 }]);

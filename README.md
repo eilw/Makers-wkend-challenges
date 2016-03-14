@@ -8,13 +8,14 @@ Requirements completed
 * a user can edit a task
 * a user can get back all the task that have been stored in project 1
 * the tasks are added to the right todolist - todo or complete
+* the get requests are performed by a factory
+
 
 
 
 
 Requirements to do
 -----
-* the get requests are performed by a factory
 * adding a task stores it in the database
 * a task is stored in the database - so they are there when returning
 * A completed task is sent to the database, where the information is stored

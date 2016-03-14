@@ -1,18 +1,20 @@
-describe('factory: GetTasks', function(){
-  var getTasks, tasks;
+describe('service: TaskDbService', function(){
+  var taskDbService, tasks, PROJECTID;
 
   tasks = {"task":
     [{"id":1,"content":"first task","completed":false,"project_id":1},
     {"id":2,"content":"completed task","completed":true,"project_id":1}]
   };
 
+  PROJECTID = 1;
+
   beforeEach(module('ToDoManager'));
-  beforeEach(inject(function(GetTasks){
-    getTasks = GetTasks;
+  beforeEach(inject(function(TaskDbService){
+    taskDbService = TaskDbService;
   }));
 
   it("responds to retrieve",function(){
-    expect(getTasks.retrieve).toBeDefined();
+    expect(taskDbService.retrieve).toBeDefined();
   });
 
   describe ('get stored tasks from api',function(){
@@ -32,7 +34,7 @@ describe('factory: GetTasks', function(){
     });
 
     it("returns the search query",function(){
-      getTasks.retrieve()
+      taskDbService.retrieve(PROJECTID)
         .then(function(response) {
         expect(response.data).toEqual(tasks)
         })
