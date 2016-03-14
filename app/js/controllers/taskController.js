@@ -1,4 +1,5 @@
-todoManager.controller('TaskController',[function(){
+todoManager.controller('TaskController',[ '$resource', function($resource){
+
   var self = this;
   self.newTask = "";
   self.tasks =[];
@@ -7,6 +8,18 @@ todoManager.controller('TaskController',[function(){
   self.addTask = function(){
     self.tasks.push({text: self.newTask, done:false});
     self.newTask = '';
+    self.getTasks();
+  };
+
+  self.displayTasks = function(tasks){
+    for(var i = 0; i<tasks.length; i++){
+      if(tasks[i].completed){
+        self.tasksCompleted.push({text: tasks[i].content, done: tasks[i].completed, taskId: tasks[i].id, projectId: tasks[i].project_id});
+      }
+      else{
+        self.tasks.push({text: tasks[i].content, done: tasks[i].completed, taskId: tasks[i].id, projectId: tasks[i].project_id});
+      }
+    }
   };
 
   self.completeTask = function(index){
@@ -14,9 +27,12 @@ todoManager.controller('TaskController',[function(){
     self.tasks.splice(index, 1);
   };
 
-  self.editMode = function(){
-    $(event.target).closest('li');
+  var taskResource = $resource('http://localhost:9292/api');
 
-  }
+  self.getTasks = function(){
+    taskResource.get({project_id: 1}).$promise.then(function(data){
+      self.displayTasks(data.task);
+    });
+  };
 
 }]);

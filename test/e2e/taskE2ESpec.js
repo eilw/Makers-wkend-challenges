@@ -21,7 +21,7 @@ describe("ToDoManager", function(){
     expect(completedTasks.count()).toBe(1);
   });
 
-  it('a user can edit a task',function(){
+  xit('a user can edit a task',function(){
     browser.get("http://localhost:8000");
     var task = element(by.model('taskCtrl.newTask'));
     var submit = $('#addTask');

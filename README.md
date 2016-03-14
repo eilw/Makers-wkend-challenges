@@ -5,14 +5,21 @@ Requirements completed
 * A user can complete a task
 * When a user clicks a task complete, it shows up under the completed area
 * Completed tasks are checked
+* a user can edit a task
+* a user can get back all the task that have been stored in project 1
+* the tasks are added to the right todolist - todo or complete
+
+
 
 
 Requirements to do
 -----
-* user can see how many tasks are remaining
-* a user can edit a task
-* A user can show/hide the completed tasks
+* the get requests are performed by a factory
+* adding a task stores it in the database
+* a task is stored in the database - so they are there when returning
 * A completed task is sent to the database, where the information is stored
+* user can see how many tasks are remaining
+* A user can show/hide the completed tasks
 * Changes to the tasks are stored, so when the user returns, the todos are the same(completed/not completed)
 
 * A user can create multiple projects

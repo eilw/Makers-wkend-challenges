@@ -40,7 +40,34 @@ describe('TaskController', function() {
 
   });
 
-  describe ('editing a task',function(){
+  describe ('getTasks - calling the api to get tasks',function(){
+     var httpBackend;
+     beforeEach(inject(function($httpBackend){
+       httpBackend = $httpBackend
+       httpBackend
+         .when("GET", 'http://localhost:9292/api?project_id=1')
+         .respond(
+            {"task":
+              [{"id":1,"content":"first task","completed":false,"project_id":1},
+              {"id":2,"content":"completed task","completed":true,"project_id":1}]
+            }
+         );
+     }));
+
+     it('displays todo tasks in the task', function(){
+       ctrl.getTasks();
+       httpBackend.flush();
+       expect(ctrl.tasks[0].text).toEqual('first task');
+     });
+
+     it('completed tasks are put in the completed list', function(){
+       ctrl.getTasks();
+       httpBackend.flush();
+       expect(ctrl.tasksCompleted[0].text).toEqual('completed task');
+     });
+   });
+
+  xdescribe ('editing tasks',function(){
 
     beforeEach(function(){
       taskText = 'this is the first task';
