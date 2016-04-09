@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" ng-app='ToDoManager'>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Todo Manager</title>
+    <link rel="stylesheet" href="todo.css">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/taskDbService.js"></script>
+    <script src="js/taskService.js"></script>
+
+    <script src="js/controllers/TaskController.js"></script>
+  </head>
+
+  <body>
+    <section id='project-overview'>
+      <h1>Project overview</h1>
+      <ul>
+        <li id='project1'><a href='#' class='projects'>first project </a><a href='#' class='delete'> X</a></li>
+        <li id='project2'><a href='#' class='projects'>second project </a><a href='#' class='delete'> X</a></li>
+      </ul>
+
+      <form class="form-horizontal">
+        <input type="text" >
+        <button class="btn">Add project</button>
+      </form>
+    </section>
+    <section id='task-overview' ng-controller='TaskController as taskCtrl'>
+      <h1> Task overview </h1>
+      <section id='task-todo'>
+        <h3> Tasks to be completed</h3>
+        <form class="form-horizontal">
+          <input type="text" ng-model="taskCtrl.newTask">
+          <button id='addTask' class="btn" ng-click="taskCtrl.addTask()">Add task</button>
+        </form>
+        <ul>
+          <li class='task' ng-repeat='task in taskCtrl.tasks track by $index'><input type='checkbox' class='finish' ng-model="task.done" ng-click="taskCtrl.completeTask($index)"></input><input type='text' ng-model="task.text"><a href='#' class='delete'></a></li>
+        </ul>
+      </section>
+      <section id='task-completed'>
+        <h4> Completed tasks</h4>
+        <ul class='completed-tasks'>
+          <li class='completed-task' ng-repeat='completedTask in taskCtrl.tasksCompleted track by $index'> {{completedTask.text}}<input type='checkbox' class='finish'checked></input><a href='#' class='delete'></a></li>
+        </ul>
+      </section>
+      <section id='task-controls'>
+
+      </section>
+    </section>
+  </body>
+</html>
