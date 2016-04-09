@@ -54,13 +54,13 @@ Installation:
 Screenshots:
 -----
 Overview
-![Overview](/docs/screenshot/Overview.png)
+![Overview](./docs/screenshot/Overview.png)
 
 Second roll
-![Second_roll](/docs/screenshot/Second-roll.png)
+![Second_roll](./docs/screenshot/Second-roll.png)
 
 Example of game result
-![Result](/docs/screenshot/result1.png)
+![Result](./docs/screenshot/result1.png)
 
 Perfect game
-![Perfect_game](/docs/screenshot/perfectgame.png)
+![Perfect_game](./docs/screenshot/perfectgame.png)
